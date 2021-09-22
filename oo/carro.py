@@ -73,44 +73,68 @@ Exemplo:
 """
 
 
+class Carro:
+    def __init__(self, motor, direcao):
+        self.direcao = direcao
+        self.motor = motor
+
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        return self.motor.acelerar()
+
+    def frear(self):
+        return self.motor.frear()
+
+    def calcular_direcao(self):
+        return self.motor.direcao.direcao
+
+    def girar_a_direita(self):
+        return self.motor.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        return self.motor.girar_a_esquerda()
+
+
 class Motor:
-    def __init__(self, velocidade):
+    # def __init__(self, velocidade):
+        # self.velocidade = 0
+		# return velocidade
+    def __init__(self):
         self.velocidade = 0
-		return velocidade
 
-    def mostrar_velocidade(velocidade):
-        Motor.vel_agora = velocidade
-        return print(velocidade)
+    # def acelerar(velocidade):
+    #     velocidade += 1
+    #     return velocidade
+    def acelerar(self):
+        self.velocidade += 1
 
-    def acelerar(velocidade):
-        velocidade += 1
-        return velocidade
-
-    def frear(velocidade):
-        velocidade -= 2
-        return velocidade
-
-
-posicao = ['Norte', 'Leste', 'Sul', 'Oeste']
+    def frear(self):
+        self.velocidade -= 2
+        # vel será o valor max entre o 1º elemento(0) e o 2º(vel atual)
+        self.velocidade = max(0, self.velocidade)
+    # def frear(velocidade):
+    #     velocidade -= 2
+        # return velocidade
 
 
 class Direcao:
-	def __init__(self, numero):
-		self.numero = 0
-		return numero
+    posicao = ['Norte', 'Leste', 'Sul', 'Oeste']
 
-    def valor(numero):
-        direcao = posicao[numero]
-        return print(direcao)
+	def __init__(self):
+		self.valor = 0
+        self.direcao = posicao[self.valor]
 
-    def girar_a_direita(numero):
-        if numero == 3:
-			numero = -1
-		numero += 1
-        return numero
+    def valor(self):
+        print(self.direcao)
 
-    def girar_a_esquerda(numero):
-		if numero == 0:
-			numero = 3	
-        numero -= 1
-        return numero
+    def girar_a_direita(self):
+        if self.valor == 3:
+			self.valor = -1
+		self.valor += 1
+
+    def girar_a_esquerda(self):
+		if self.valor == 0:
+			self.valor = 3	
+        self.valor -= 1
