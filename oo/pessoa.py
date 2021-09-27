@@ -5,11 +5,25 @@ class Pessoa:  # CamelCase
         # atr é o "nome" do objeto definido pelo self
 
     def cumprimentar(self):
-        return 'Olá'
+        return f'Olá, meu nome é {self.nome}'
+
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos {cls.olhos}'
 
 
+# class Homem(Pessoa): ASSIM SOBRESCREVERIA TODA A CLASSE PAI/SUPERCLASSE
+#     def cumprimentar(self):
+#         return 'Aperto de mão'
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar()  # PUXANDO O METODO DA SUPERCLASSE
+        # ASSIM ADICIONA O APERTO DE MÃO A CLASSE PAI
+        return f'{cumprimentar_da_classe}. Aperto de mão'
 
 
 class Mutante(Pessoa):
